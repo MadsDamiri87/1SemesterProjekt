@@ -1,6 +1,9 @@
 package semKloeverly.domain;
 
-public class Resident {
+import java.io.Serializable;
+
+public class Resident implements Serializable
+{
 
     private int points;
     private String name;
@@ -25,20 +28,8 @@ public class Resident {
         this.points = newPoints;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getSurname() {
-        return surname;
-    }
-
-    public void setSurname(String surname) {
-        this.surname = surname;
+    public String getFullname() {
+        return name + " " + surname;
     }
 
     public String getAddress() {

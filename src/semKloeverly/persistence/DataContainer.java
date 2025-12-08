@@ -8,10 +8,12 @@ import semKloeverly.domain.Resident;
 //import semKloeverly.domain.tasks.Tasks;
 //import semKloeverly.domain.tasks.TradeTasks;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DataContainer {
+public class DataContainer implements Serializable
+{
 
 //    private List<Tasks> tasks;
     private List<Resident> residents;
