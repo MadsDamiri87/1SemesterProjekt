@@ -23,7 +23,6 @@ public class ViewManager {
         loader.setLocation(ViewManager.class.getResource("/fxml/" + viewName + ".fxml"));
 
             Parent root = loader.load();
-            //  Parent controller = loader.getController();  -  Skal muligvis bruges senere men ikke være "Parent" type
             centerPane.getChildren().setAll(root);
 
         }
