@@ -12,6 +12,8 @@ public interface DataManager {
 
     void addResident(Resident resident);
     List<Resident> getAllResidents();
+    void updateResident(Resident resident);
+    void deleteResident(Resident resident);
 
 
 //    void addTask(Task task);

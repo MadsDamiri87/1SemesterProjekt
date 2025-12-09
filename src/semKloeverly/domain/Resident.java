@@ -10,6 +10,7 @@ public class Resident implements Serializable
     private String surname;
     private String address;
     private String phoneNumber;
+    private int id;
 
 
     public Resident(int points, String name,  String surname, String address, String phoneNumber) {
@@ -24,6 +25,7 @@ public class Resident implements Serializable
     public int getPoints() {
         return points;
     }
+
     public void setPoints(int newPoints) {
         this.points = newPoints;
     }
@@ -31,6 +33,7 @@ public class Resident implements Serializable
     public String getFullname() {
         return name + " " + surname;
     }
+
 
     public String getAddress() {
         return address;
@@ -47,4 +50,34 @@ public class Resident implements Serializable
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
+
+  public String getName()
+  {
+    return name;
+  }
+
+  public void setName(String name)
+  {
+    this.name = name;
+  }
+
+  public void setSurname(String surname)
+  {
+    this.surname = surname;
+  }
+
+  public String getSurname()
+  {
+    return surname;
+  }
+
+  public int getId()
+  {
+    return id;
+  }
+
+  public void setId(int id)
+  {
+    this.id = id;
+  }
 }

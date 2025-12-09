@@ -32,6 +32,19 @@ public class FileDataManager implements DataManager
   {
 
     data = load();
+
+    int maxID=0;
+
+    for (Resident person : data.getResidents())
+    {
+      if (person.getId() > maxID)
+      {
+        maxID = person.getId();
+      }
+    }
+
+    resident.setId(maxID + 1);
+
     data.getResidents().add(resident);
 
     saveResidentFile(data);
@@ -64,6 +77,7 @@ public class FileDataManager implements DataManager
     {
       return new DataContainer();
     }
+
     try (ObjectInputStream loadResidentsToFile = new ObjectInputStream(
         new FileInputStream("save.bin")))
     {
@@ -71,6 +85,7 @@ public class FileDataManager implements DataManager
     }
     catch (IOException | ClassNotFoundException e)
     {
+      e.printStackTrace();
       Alert alert = new Alert(Alert.AlertType.ERROR,
           "Error - Data not loaded!");
       alert.show();
@@ -85,6 +100,28 @@ public class FileDataManager implements DataManager
     data=load();
     return data.getResidents();
 
+  }
+
+@Override public void deleteResident (Resident deleteResident)
+{
+  data = load();
+  data.getResidents().removeIf(person ->person.getId() == deleteResident.getId());
+  saveResidentFile(data);
+}
+
+  @Override public void updateResident(Resident updatedResident)
+  {
+    data = load();
+    for (int i = 0; i < data.getResidents().size(); i++)
+    {
+      Resident person = data.getResidents().get(i);
+      if(person.getId() == updatedResident.getId())
+      {
+        data.getResidents().set(i,updatedResident);
+        break;
+      }
+    }
+    saveResidentFile(data);
   }
 
   //    @Override
