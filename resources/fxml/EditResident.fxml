@@ -32,7 +32,7 @@
                         <Insets />
                      </HBox.margin>
                   </Label>
-                  <TextField id="pointsTextfield" fx:id="pointBox" alignment="CENTER_RIGHT" prefHeight="25.0" prefWidth="54.0" promptText="Kun tal" text="0">
+                  <TextField id="pointsTextfield" fx:id="startingPoints" alignment="CENTER_RIGHT" prefHeight="25.0" prefWidth="54.0" promptText="Kun tal" text="0">
                      <HBox.margin>
                         <Insets right="30.0" />
                      </HBox.margin>
@@ -42,17 +42,37 @@
                   <Insets top="1.0" />
                </VBox.margin>
             </HBox>
-            <Label alignment="CENTER_RIGHT" prefHeight="25.0" prefWidth="697.0" text="Current tasks:">
-               <font>
-                  <Font size="16.0" />
-               </font>
-               <VBox.margin>
-                  <Insets right="60.0" top="20.0" />
-               </VBox.margin>
-            </Label>
+            <HBox alignment="CENTER_RIGHT" prefHeight="47.0" prefWidth="698.0">
+               <children>
+                  <Label text="Name">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets right="10.0" top="50.0" />
+                     </HBox.margin>
+                  </Label>
+                  <TextField fx:id="nameTextFieldResident" alignment="CENTER_RIGHT" prefHeight="32.0" prefWidth="273.0">
+                     <HBox.margin>
+                        <Insets right="122.0" top="50.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </TextField>
+                  <Label text="Current tasks:">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets right="75.0" top="50.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+            </HBox>
             <HBox alignment="CENTER_RIGHT" prefHeight="54.0" prefWidth="698.0">
                <children>
-                  <Label text="Name:">
+                  <Label text="Surname:">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>
@@ -60,7 +80,7 @@
                         <Insets right="10.0" />
                      </HBox.margin>
                   </Label>
-                  <TextField alignment="CENTER_RIGHT" prefHeight="32.0" prefWidth="273.0">
+                  <TextField fx:id="surNameTextFieldResident" alignment="CENTER_RIGHT" prefHeight="32.0" prefWidth="273.0">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -74,9 +94,6 @@
                      </HBox.margin>
                   </ComboBox>
                </children>
-               <VBox.margin>
-                  <Insets />
-               </VBox.margin>
             </HBox>
             <HBox alignment="CENTER_RIGHT" prefHeight="47.0" prefWidth="698.0">
                <children>
@@ -88,7 +105,7 @@
                         <Insets right="10.0" />
                      </HBox.margin>
                   </Label>
-                  <TextField alignment="CENTER_RIGHT" prefHeight="32.0" prefWidth="273.0">
+                  <TextField fx:id="addressTextFieldResident" alignment="CENTER_RIGHT" prefHeight="32.0" prefWidth="273.0">
                      <HBox.margin>
                         <Insets right="144.0" />
                      </HBox.margin>
@@ -116,7 +133,7 @@
                         <Insets right="10.0" />
                      </HBox.margin>
                   </Label>
-                  <TextField alignment="CENTER_RIGHT" prefHeight="32.0" prefWidth="273.0">
+                  <TextField fx:id="phoneNumberTextFieldResident" alignment="CENTER_RIGHT" prefHeight="32.0" prefWidth="273.0">
                      <HBox.margin>
                         <Insets right="94.0" />
                      </HBox.margin>
@@ -151,19 +168,19 @@
                   </TextField>
                </children>
             </HBox>
-            <HBox alignment="BOTTOM_RIGHT" prefHeight="129.0" prefWidth="698.0">
+            <HBox alignment="BOTTOM_RIGHT" prefHeight="104.0" prefWidth="698.0">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="133.0" text="Delete Resident">
+                  <Button mnemonicParsing="false" onAction="#onDeleteResidentButton" prefHeight="25.0" prefWidth="133.0" text="Delete Resident">
                      <HBox.margin>
                         <Insets right="220.0" />
                      </HBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="133.0" text="Save Resident">
+                  <Button mnemonicParsing="false" onAction="#onSaveResidentButton" prefHeight="25.0" prefWidth="133.0" text="Save Resident">
                      <HBox.margin>
                         <Insets right="20.0" />
                      </HBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="133.0" text="Cancel">
+                  <Button mnemonicParsing="false" onAction="#onCancelResidentButton" prefHeight="25.0" prefWidth="133.0" text="Cancel">
                      <HBox.margin>
                         <Insets right="30.0" />
                      </HBox.margin>

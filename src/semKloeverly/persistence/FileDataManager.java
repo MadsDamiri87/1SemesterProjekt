@@ -64,6 +64,7 @@ public class FileDataManager implements DataManager
     {
       return new DataContainer();
     }
+
     try (ObjectInputStream loadResidentsToFile = new ObjectInputStream(
         new FileInputStream("save.bin")))
     {
@@ -86,6 +87,30 @@ public class FileDataManager implements DataManager
     return data.getResidents();
 
   }
+
+@Override public void deleteResident (Resident resident)
+{
+  data = load();
+  data.getResidents().removeIf(r ->
+      r.getName().equals(resident.getName()) &&
+          r.getSurname().equals(resident.getSurname()) &&
+          r.getAddress().equals(resident.getAddress()) &&
+          r.getPhoneNumber().equals(resident.getPhoneNumber())
+  );
+  saveResidentFile(data);
+}
+
+//  @Override public void updateResident(Resident updatedResident)
+//  {
+//    data = load();
+//    for (int i = 0; i < data.getResidents().size(); i++)
+//    {
+//      Resident resident = data.getResidents().get(i);
+//      if()
+//      }
+//    }
+//    saveResidentFile(data);
+//  }
 
   //    @Override
   //    public void addTask(Task task) {

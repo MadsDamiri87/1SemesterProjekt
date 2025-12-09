@@ -24,6 +24,7 @@ public class Resident implements Serializable
     public int getPoints() {
         return points;
     }
+
     public void setPoints(int newPoints) {
         this.points = newPoints;
     }
@@ -31,6 +32,7 @@ public class Resident implements Serializable
     public String getFullname() {
         return name + " " + surname;
     }
+
 
     public String getAddress() {
         return address;
@@ -47,4 +49,14 @@ public class Resident implements Serializable
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
+
+  public String getName()
+  {
+    return name;
+  }
+
+  public String getSurname()
+  {
+    return surname;
+  }
 }

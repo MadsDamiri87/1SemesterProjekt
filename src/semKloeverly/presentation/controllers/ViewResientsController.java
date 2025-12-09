@@ -8,7 +8,6 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import semKloeverly.domain.Resident;
 import semKloeverly.persistence.DataManager;
@@ -74,10 +73,7 @@ public class ViewResientsController {
           Resident selectedResident = residentViewTable.getSelectionModel().getSelectedItem();
 
           if (selectedResident != null) {
-              residentName.setText(selectedResident.getFullname());
-              residentsAddress.setText(selectedResident.getAddress());
-              residentsNumber.setText(selectedResident.getPhoneNumber());
-              residentsPoints.setText(String.valueOf(selectedResident.getPoints()));
+              ViewManager.setEditResident(selectedResident);
 
               ViewManager.showView("EditResident");
 
@@ -86,7 +82,7 @@ public class ViewResientsController {
   }
 
   public void onEditResident() {
-        ViewManager.showView("EditResident");
+
 
 
     }

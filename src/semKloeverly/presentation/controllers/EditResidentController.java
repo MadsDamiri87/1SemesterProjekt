@@ -1,5 +1,6 @@
 package semKloeverly.presentation.controllers;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
@@ -8,69 +9,77 @@ import semKloeverly.persistence.DataManager;
 import semKloeverly.persistence.FileDataManager;
 import semKloeverly.presentation.core.ViewManager;
 
-public class EditResidentController {
+public class EditResidentController
+{
 
-    @FXML
-    public TextField pointBox;
+  @FXML public TextField pointBox;
 
-    @FXML
-    private TextField startingPoints;
+  @FXML private TextField startingPoints;
 
-    @FXML
-    private TextField nameTextFieldResident;
+  @FXML private TextField nameTextFieldResident;
 
-    @FXML
-    private TextField surNameTextFieldResident;
+  @FXML private TextField surNameTextFieldResident;
 
-    @FXML
-    private TextField addressTextFieldResident;
+  @FXML private TextField addressTextFieldResident;
 
-    @FXML
-    private TextField phoneNumberTextFieldResident;
+  @FXML private TextField phoneNumberTextFieldResident;
 
-    private DataManager dataManager;
+  private DataManager dataManager;
 
-    @FXML
-    public void initialize() {
-        dataManager = FileDataManager.getInstance();
+  private Resident editResident;
+
+  @FXML public void initialize()
+  {
+    dataManager = FileDataManager.getInstance();
+
+    editResident = ViewManager.getEditResident();
+
+    if (editResident != null)
+    {
+      startingPoints.setText(String.valueOf(editResident.getPoints()));
+      nameTextFieldResident.setText(editResident.getName());
+      surNameTextFieldResident.setText(editResident.getSurname());
+      addressTextFieldResident.setText(editResident.getAddress());
+      phoneNumberTextFieldResident.setText(editResident.getPhoneNumber());
+    }
+  }
+
+  public void onDeleteResidentButton(ActionEvent actionEvent)
+  {
+    if (editResident == null)
+    {
+      return;
     }
 
-    public void saveNewResidentButton() {
-        String name = nameTextFieldResident.getText();
-        String surName = surNameTextFieldResident.getText();
-        String address = addressTextFieldResident.getText();
-        String phoneNumber = phoneNumberTextFieldResident.getText();
+      dataManager.deleteResident(editResident);
 
-        try {
-            int points = Integer.parseInt(startingPoints.getText());
-            Resident resident = new Resident(points, name, surName, address, phoneNumber);
-            dataManager.addResident(resident);
-            ViewManager.showView("EditResident");
+    ViewManager.showView("ViewResidents");
 
+  }
 
-        }
-        catch (NumberFormatException e) {
-            Alert error = new Alert(Alert.AlertType.INFORMATION, "Only numbers are accepted as points. Try again\n " + e.getMessage());
-            error.show();
+  public void onSaveResidentButton(ActionEvent actionEvent)
+  {
+    //dataManager.updateResident(editResident);
+    ViewManager.showView("ViewResidents");
 
-        }
+  }
 
-    }
+  public void onCancelResidentButton(ActionEvent actionEvent)
+  {
+    ViewManager.showView("HomeView");
+  }
 
-    public void cancelNewResident() {
-        ViewManager.showView("HomeView");
-    }
+  public void nameFieldAddResident()
+  {
+  }
 
+  public void addressFieldAddResident()
+  {
+  }
 
-    public void nameFieldAddResident() {
-    }
-
-    public void addressFieldAddResident() {
-    }
-
-    public void phoneFieldAddResident() {
-    }
-
+  public void phoneFieldAddResident()
+  {
+  }
 }
 
 
