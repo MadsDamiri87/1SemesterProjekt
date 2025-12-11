@@ -22,7 +22,7 @@
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <TableView fx:id="residentsViewTable" editable="true" prefHeight="390.0" prefWidth="678.0">
+                  <TableView fx:id="residentsViewTable" editable="true" onMouseClicked="#ClickResident" prefHeight="390.0" prefWidth="678.0">
                      <columns>
                         <TableColumn fx:id="residentsName" prefWidth="166.66668701171875" text="Resident" />
                         <TableColumn fx:id="residentsAddress" prefWidth="292.66668701171875" text="Address" />

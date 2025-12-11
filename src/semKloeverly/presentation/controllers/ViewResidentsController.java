@@ -121,6 +121,9 @@ public class ViewResidentsController
 
   }
 
+  public void ClickResident()
+  {
+  }
 }
 
 

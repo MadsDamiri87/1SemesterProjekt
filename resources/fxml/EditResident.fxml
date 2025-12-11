@@ -52,7 +52,7 @@
                         <Insets right="10.0" top="50.0" />
                      </HBox.margin>
                   </Label>
-                  <TextField alignment="CENTER_RIGHT" prefHeight="32.0" prefWidth="273.0">
+                  <TextField fx:id="nameTextFieldResident" alignment="CENTER_RIGHT" prefHeight="32.0" prefWidth="273.0">
                      <HBox.margin>
                         <Insets right="122.0" top="50.0" />
                      </HBox.margin>
@@ -80,7 +80,7 @@
                         <Insets right="10.0" />
                      </HBox.margin>
                   </Label>
-                  <TextField alignment="CENTER_RIGHT" prefHeight="32.0" prefWidth="273.0">
+                  <TextField fx:id="surNameTextFieldResident" alignment="CENTER_RIGHT" prefHeight="32.0" prefWidth="273.0">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -105,7 +105,7 @@
                         <Insets right="10.0" />
                      </HBox.margin>
                   </Label>
-                  <TextField alignment="CENTER_RIGHT" prefHeight="32.0" prefWidth="273.0">
+                  <TextField fx:id="addressTextFieldResident" alignment="CENTER_RIGHT" prefHeight="32.0" prefWidth="273.0">
                      <HBox.margin>
                         <Insets right="144.0" />
                      </HBox.margin>
@@ -133,7 +133,7 @@
                         <Insets right="10.0" />
                      </HBox.margin>
                   </Label>
-                  <TextField alignment="CENTER_RIGHT" prefHeight="32.0" prefWidth="273.0">
+                  <TextField fx:id="phoneNumberTextFieldResident" alignment="CENTER_RIGHT" prefHeight="32.0" prefWidth="273.0">
                      <HBox.margin>
                         <Insets right="94.0" />
                      </HBox.margin>
@@ -150,7 +150,7 @@
             </HBox>
             <HBox alignment="CENTER_RIGHT" prefHeight="47.0" prefWidth="698.0">
                <children>
-                  <Label text="Assign Tasks:">
+                  <Label text="Description:">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>

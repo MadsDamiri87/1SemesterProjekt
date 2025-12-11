@@ -92,7 +92,7 @@ public class EditResidentController
 
   }
 
-  public void onCancelResidentButton(ActionEvent actionEvent)
+  public void onCancelResidentButton()
   {
     ViewManager.showView("HomeView");
   }
