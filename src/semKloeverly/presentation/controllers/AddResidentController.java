@@ -44,6 +44,7 @@ public class AddResidentController {
         String address = addressTextFieldResident.getText();
         String phoneNumber = phoneNumberTextFieldResident.getText();
 
+
         try {
             int points = Integer.parseInt(startingPoints.getText());
             Resident resident = new Resident(points, name, surName, address, phoneNumber);

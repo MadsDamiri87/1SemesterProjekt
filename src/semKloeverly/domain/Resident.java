@@ -4,13 +4,13 @@ import java.io.Serializable;
 
 public class Resident implements Serializable
 {
-
+    private int id;
     private int points;
     private String name;
     private String surname;
     private String address;
     private String phoneNumber;
-    private int id;
+
 
 
     public Resident(int points, String name,  String surname, String address, String phoneNumber) {
@@ -80,4 +80,10 @@ public class Resident implements Serializable
   {
     this.id = id;
   }
+
+    @Override
+    public String toString() {
+        return name + " " + surname;
+    }
+
 }

@@ -1,15 +1,17 @@
 package semKloeverly.domain.tasks;
 
-public class GreenTasks extends Tasks {
+import semKloeverly.domain.Resident;
+
+import java.io.Serializable;
+import java.util.Collections;
+import java.util.List;
+
+public class GreenTasks extends Tasks implements Serializable {
 
 
-    public GreenTasks(String type, String description, int points) {
-        super(type, description, points);
+    public GreenTasks(Resident resident, String type, String description, int points, String status) {
+        super(resident, type, description, points, status);
     }
 
-//    @Override
-//    public int getPoints()
-//    {
-//        return 0; //temporary
-//    }
+
 }

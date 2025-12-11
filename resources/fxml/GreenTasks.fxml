@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="493.0" prefWidth="718.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="493.0" prefWidth="718.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="semKloeverly.presentation.controllers.GreenTasksController">
    <children>
       <VBox layoutX="5.0" layoutY="4.0" prefHeight="485.0" prefWidth="708.0">
          <children>
@@ -27,7 +27,7 @@
                         <Insets />
                      </HBox.margin>
                   </Label>
-                  <TextField id="pointsTextfield" alignment="CENTER_RIGHT" prefHeight="31.0" prefWidth="78.0" promptText="Kun tal" text="0">
+                  <TextField id="pointsTextfield" fx:id="pointField" alignment="CENTER_RIGHT" prefHeight="31.0" prefWidth="78.0" promptText="Kun tal" text="0">
                      <HBox.margin>
                         <Insets right="200.0" />
                      </HBox.margin>
@@ -47,7 +47,7 @@
                         <Insets right="10.0" />
                      </HBox.margin>
                   </Label>
-                  <TextField alignment="CENTER_RIGHT" prefHeight="32.0" prefWidth="273.0" promptText="Type in green task description">
+                  <TextField fx:id="descriptionTextfield" alignment="CENTER_RIGHT" prefHeight="32.0" prefWidth="273.0" promptText="Type in green task description">
                      <HBox.margin>
                         <Insets right="200.0" />
                      </HBox.margin>
@@ -67,7 +67,7 @@
                         <Insets right="10.0" />
                      </HBox.margin>
                   </Label>
-                  <ComboBox id="residentDropDown" prefHeight="36.0" prefWidth="273.0" promptText="Rresidents">
+                  <ComboBox id="residentDropDown" fx:id="assignResidentComboBox" prefHeight="36.0" prefWidth="273.0" promptText="Residents">
                      <HBox.margin>
                         <Insets right="200.0" />
                      </HBox.margin>
@@ -77,14 +77,34 @@
                   </ComboBox>
                </children>
             </HBox>
-            <HBox alignment="BOTTOM_RIGHT" prefHeight="168.0" prefWidth="698.0">
+            <HBox alignment="CENTER_RIGHT" prefHeight="47.0" prefWidth="698.0">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="133.0" text="Save Task">
+                  <Label text="Status:">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                  </Label>
+                  <ComboBox id="residentDropDown" fx:id="statusComboBox" prefHeight="36.0" prefWidth="273.0" promptText="Task Status">
+                     <HBox.margin>
+                        <Insets right="200.0" />
+                     </HBox.margin>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </ComboBox>
+               </children>
+            </HBox>
+            <HBox alignment="BOTTOM_RIGHT" prefHeight="148.0" prefWidth="708.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#saveButtonGreenTasks" prefHeight="25.0" prefWidth="133.0" text="Save Task">
                      <HBox.margin>
                         <Insets right="20.0" />
                      </HBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="133.0" text="Cancel">
+                  <Button mnemonicParsing="false" onAction="#cancelButtonGreenTasks" prefHeight="25.0" prefWidth="133.0" text="Cancel">
                      <HBox.margin>
                         <Insets right="30.0" />
                      </HBox.margin>

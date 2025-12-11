@@ -21,11 +21,10 @@
             </Label>
             <TableView fx:id="viewAllTasksTableView" editable="true" prefHeight="389.0" prefWidth="668.0">
               <columns>
-                <TableColumn prefWidth="145.3333740234375" text="Task Type" />
-                <TableColumn prefWidth="194.0" text="Description" />
-                  <TableColumn prefWidth="116.0" text="Resident " />
-                  <TableColumn prefWidth="95.333251953125" text="Assigned Points" />
-                  <TableColumn prefWidth="118.0" text="Status" />
+                <TableColumn fx:id="taskTypeViewAllTasks" prefWidth="155.33334922790527" text="Task Type" />
+                <TableColumn fx:id="descriptionViewAllTasks" prefWidth="261.3332977294922" text="Description" />
+                  <TableColumn fx:id="assignedPointsViewAllTasks" prefWidth="100.66671752929688" text="Assigned Points" />
+                  <TableColumn fx:id="statusViewAllTasks" prefWidth="163.3333740234375" text="Status" />
               </columns>
                <VBox.margin>
                   <Insets left="20.0" right="20.0" top="20.0" />
