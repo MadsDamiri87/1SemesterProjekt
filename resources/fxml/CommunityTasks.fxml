@@ -27,7 +27,7 @@
                         <Insets />
                      </HBox.margin>
                   </Label>
-                  <TextField id="pointsTextfield" fx:id="points" alignment="CENTER_RIGHT" prefHeight="31.0" prefWidth="78.0" promptText="Kun tal" text="0">
+                  <TextField fx:id="pointField" alignment="CENTER_RIGHT" prefHeight="31.0" prefWidth="78.0" promptText="Kun tal" text="0">
                      <HBox.margin>
                         <Insets right="200.0" />
                      </HBox.margin>
@@ -47,7 +47,7 @@
                         <Insets right="10.0" />
                      </HBox.margin>
                   </Label>
-                  <TextField fx:id="descriptionTextfield" alignment="CENTER_RIGHT" prefHeight="32.0" prefWidth="273.0" promptText="Enter Description">
+                  <TextField fx:id="descriptionTextField" alignment="CENTER_RIGHT" prefHeight="32.0" prefWidth="273.0" promptText="Enter Description">
                      <HBox.margin>
                         <Insets right="200.0" />
                      </HBox.margin>
@@ -67,7 +67,27 @@
                         <Insets right="10.0" />
                      </HBox.margin>
                   </Label>
-                  <ComboBox id="residentDropDown" fx:id="dropDownResidents" prefHeight="36.0" prefWidth="273.0" promptText="Rresidents">
+                  <ComboBox id="residentDropDown" fx:id="assignResidentComboBox" prefHeight="36.0" prefWidth="273.0" promptText="Rresidents">
+                     <HBox.margin>
+                        <Insets right="200.0" />
+                     </HBox.margin>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </ComboBox>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_RIGHT" prefHeight="47.0" prefWidth="698.0">
+               <children>
+                  <Label text="Status:">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                  </Label>
+                  <ComboBox id="residentDropDown" fx:id="statusComboBox" prefHeight="36.0" prefWidth="273.0" promptText="Task Status">
                      <HBox.margin>
                         <Insets right="200.0" />
                      </HBox.margin>
@@ -79,12 +99,12 @@
             </HBox>
             <HBox alignment="BOTTOM_RIGHT" prefHeight="227.0" prefWidth="708.0">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="133.0" text="Save Task">
+                  <Button mnemonicParsing="false" onAction="#onSaveTaskButton" prefHeight="25.0" prefWidth="133.0" text="Save Task">
                      <HBox.margin>
                         <Insets right="20.0" />
                      </HBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="133.0" text="Cancel">
+                  <Button mnemonicParsing="false" onAction="#onCancelTaskButton" prefHeight="25.0" prefWidth="133.0" text="Cancel">
                      <HBox.margin>
                         <Insets right="30.0" />
                      </HBox.margin>

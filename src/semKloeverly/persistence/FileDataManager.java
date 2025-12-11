@@ -46,13 +46,7 @@ public class FileDataManager implements DataManager {
     }
 
 
-    @Override
-    public void addGreenTask(GreenTasks greenTask) {
-        data = load();
-        data.getTasks().add(greenTask);
-        saveResidentFile(data);
 
-    }
 
     @Override
     public void addTask(Tasks tasks){
@@ -129,6 +123,13 @@ public class FileDataManager implements DataManager {
         saveResidentFile(data);
     }
 
+  //    @Override
+  //    public void addGreenTask(GreenTasks greenTask) {
+  //        data = load();
+  //        data.getTasks().add(greenTask);
+  //        saveResidentFile(data);
+  //
+  //    }
     //    @Override
     //    public List<Task> getAllTasks() {
     //        return List.of();

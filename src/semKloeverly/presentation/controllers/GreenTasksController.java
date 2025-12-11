@@ -2,10 +2,7 @@ package semKloeverly.presentation.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.ListCell;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import semKloeverly.domain.Resident;
 import semKloeverly.domain.tasks.GreenTasks;
 import semKloeverly.domain.tasks.Tasks;
@@ -15,58 +12,60 @@ import semKloeverly.presentation.core.ViewManager;
 
 import java.util.List;
 
-public class GreenTasksController {
+public class GreenTasksController
+{
 
+  @FXML private ComboBox<String> statusComboBox;
+  @FXML private TextField pointField;
+  @FXML private TextField descriptionTextfield;
+  @FXML private ComboBox<Resident> assignResidentComboBox;
+  @FXML private Label messageLabel;
+  private DataManager dataManager;
 
-    public ComboBox<String> statusComboBox;
-    @FXML
-    private TextField pointField;
-    @FXML
-    private TextField descriptionTextfield;
-    @FXML
-    private ComboBox<Resident> assignResidentComboBox;
+  @FXML public void initialize()
+  {
+    dataManager = FileDataManager.getInstance();
+    messageLabel.setText("Status: Ready to add a Green Task");
 
-    private DataManager dataManager;
+    List<Resident> allResidents = dataManager.getAllResidents();
 
-    @FXML
-    public void initialize() {
-        dataManager = FileDataManager.getInstance();
+    assignResidentComboBox.getItems().addAll(allResidents);
+    statusComboBox.getItems()
+        .addAll("Taken", "Not Taken", "Assign", "Not Assign");
 
-        List<Resident> allResidents = dataManager.getAllResidents();
+  }
 
-        assignResidentComboBox.getItems().addAll(allResidents);
-        statusComboBox.getItems().addAll("Taken", "Not Taken", "Assign", "Not Assign" );
+  public void onSaveTaskButton()
+  {
 
+    String description = descriptionTextfield.getText();
+    Resident selectedResident = assignResidentComboBox.getValue();
+    String selectedStatus = statusComboBox.getValue();
 
+    try
+    {
+      int points = Integer.parseInt(pointField.getText());
+      Tasks newGreenTask = new GreenTasks(selectedResident, "Green Task",
+          description, points, selectedStatus);
 
+      newGreenTask.setStatus(selectedStatus);
+      dataManager.addTask(newGreenTask);
+
+      messageLabel.setText("Status: Green Task " + description + " added");
+
+    }
+    catch (NumberFormatException e)
+    {
+      Alert error = new Alert(Alert.AlertType.INFORMATION,
+          "Only numbers are accepted as points. Try again\n " + e.getMessage());
+      error.show();
 
     }
 
-    public void saveButtonGreenTasks() {
+  }
 
-        String description = descriptionTextfield.getText();
-        Resident selectedResident = assignResidentComboBox.getValue();
-        String selectedStatus = statusComboBox.getValue();
-
-        try {
-            int points = Integer.parseInt(pointField.getText());
-            Tasks newGreenTask = new GreenTasks(selectedResident, "GreenTask", description, points, selectedStatus);
-
-            newGreenTask.setStatus(selectedStatus);
-            dataManager.addTask(newGreenTask);
-            ViewManager.showView("GreenTasks");
-
-
-        }
-        catch (NumberFormatException e) {
-            Alert error = new Alert(Alert.AlertType.INFORMATION, "Only numbers are acceptet as points. Try again\n " + e.getMessage());
-            error.show();
-
-        }
-
-    }
-
-    public void cancelButtonGreenTasks() {
-        ViewManager.showView("Home");
-    }
+  public void onCancelTaskButton()
+  {
+    ViewManager.showView("HomeView");
+  }
 }

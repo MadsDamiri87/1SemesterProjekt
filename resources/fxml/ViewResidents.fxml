@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="semKloeverly.presentation.controllers.ViewResientsController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="semKloeverly.presentation.controllers.ViewResidentsController">
    <children>
       <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="490.0" prefWidth="720.0">
          <children>
@@ -22,9 +22,9 @@
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <TableView fx:id="residentViewTable" editable="true" onMouseClicked="#onResidentClicked" prefHeight="390.0" prefWidth="678.0">
+                  <TableView fx:id="residentsViewTable" editable="true" prefHeight="390.0" prefWidth="678.0">
                      <columns>
-                        <TableColumn fx:id="residentName" prefWidth="166.66668701171875" text="Resident" />
+                        <TableColumn fx:id="residentsName" prefWidth="166.66668701171875" text="Resident" />
                         <TableColumn fx:id="residentsAddress" prefWidth="292.66668701171875" text="Address" />
                         <TableColumn fx:id="residentsNumber" prefWidth="120.6666259765625" text="Phone Number" />
                         <TableColumn fx:id="residentsPoints" prefWidth="100.0" text="Points" />
@@ -72,7 +72,7 @@
                               </Button>
                            </children>
                         </VBox>
-                        <TextField id="pointsTextfield" fx:id="pointFieldId" alignment="CENTER_RIGHT" onKeyReleased="#pointInputField" prefHeight="36.0" prefWidth="47.0" promptText="Kun tal" text="0">
+                        <TextField id="pointsTextfield" fx:id="pointFieldId" alignment="CENTER_RIGHT" prefHeight="36.0" prefWidth="47.0" promptText="Kun tal" text="0">
                            <font>
                               <Font size="16.0" />
                            </font>

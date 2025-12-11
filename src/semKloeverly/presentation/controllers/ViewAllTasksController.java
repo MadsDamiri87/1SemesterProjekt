@@ -6,58 +6,55 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import semKloeverly.domain.Resident;
+import semKloeverly.domain.tasks.Tasks;
 import semKloeverly.persistence.DataManager;
 import semKloeverly.persistence.FileDataManager;
 import semKloeverly.presentation.core.ViewManager;
 
-public class ViewAllTasksController {
-    @FXML
-    private TableColumn taskTypeViewAllTasks;
+public class ViewAllTasksController
+{
+  @FXML private TableColumn<Tasks, String> taskTypeViewAllTasks;
 
-    @FXML
-    private TableColumn descriptionViewAllTasks;
+  @FXML private TableColumn<Tasks, String> descriptionViewAllTasks;
 
-    @FXML
-    private TableColumn assignedPointsViewAllTasks;
+  @FXML private TableColumn<Tasks, Integer> assignedPointsViewAllTasks;
 
-    @FXML
-    private TableColumn statusViewAllTasks;
+  @FXML private TableColumn<Tasks, String> statusViewAllTasks;
 
-    @FXML
-    private TableView viewAllTasksTableView;
+  @FXML private TableView<Tasks> viewAllTasksTableView;
 
-    @FXML
-    private Button saveDataViewAllTasks;
+  private DataManager dataManager;
 
-    @FXML
-    private Button cancel;
+  @FXML public void initialize()
+  {
+    dataManager = FileDataManager.getInstance();
 
-    private DataManager dataManager;
+    taskTypeViewAllTasks.setCellValueFactory(
+        new PropertyValueFactory<>("type"));
+    descriptionViewAllTasks.setCellValueFactory(
+        new PropertyValueFactory<>("description"));
+    assignedPointsViewAllTasks.setCellValueFactory(
+        new PropertyValueFactory<>("points"));
+    statusViewAllTasks.setCellValueFactory(
+        new PropertyValueFactory<>("status"));
 
-    @FXML
-    public void initialize() {
-        dataManager = FileDataManager.getInstance();
+    loadTasks();
 
-        taskTypeViewAllTasks.setCellValueFactory(new PropertyValueFactory<>("type"));
-        descriptionViewAllTasks.setCellValueFactory(new PropertyValueFactory<>("description"));
-        assignedPointsViewAllTasks.setCellValueFactory(new PropertyValueFactory<>("points"));
-        statusViewAllTasks.setCellValueFactory(new PropertyValueFactory<>("status"));
+  }
 
-        loadTasks();
+  public void loadTasks()
+  {
+    viewAllTasksTableView.getItems().setAll(dataManager.getAllTasks());
 
+  }
 
-    }
+  public void cancelViewAllTasks()
+  {
+    ViewManager.showView("HomeView");
+  }
 
-    public void loadTasks() {
-        viewAllTasksTableView.getItems().setAll(dataManager.getAllTasks());
-
-    }
-
-
-    public void cancelViewAllTasks() {
-        ViewManager.showView("HomeView");
-    }
-
-    public void saveDataViewAllTasks() {
-    }
+  public void saveDataViewAllTasks()
+  {
+  }
 }

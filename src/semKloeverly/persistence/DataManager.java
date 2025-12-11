@@ -23,10 +23,10 @@ public interface DataManager {
     void addTask(Tasks task);
     List<Tasks> getAllTasks();
 
-    void addGreenTask(GreenTasks greenTask);
 
 
-   // List<GreenTasks> getAllGreenTasks();
+    //void addGreenTask(GreenTasks greenTask);
+     // List<GreenTasks> getAllGreenTasks();
 
     //
     //
