@@ -34,7 +34,7 @@ public class GreenTasksController {
         List<Resident> allResidents = dataManager.getAllResidents();
 
         assignResidentComboBox.getItems().addAll(allResidents);
-        statusComboBox.getItems().addAll("Taken", "Not Taken", "Assign", "Not Assign");
+        statusComboBox.getItems().addAll( "Assign", "Not Assign");
 
     }
 

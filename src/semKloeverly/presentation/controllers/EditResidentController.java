@@ -1,6 +1,5 @@
 package semKloeverly.presentation.controllers;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
@@ -44,7 +43,7 @@ public class EditResidentController {
         }
     }
 
-    public void onDeleteResidentButton(ActionEvent actionEvent) {
+    public void onDeleteResidentButton() {
         if (editResident == null) {
             return;
         }
@@ -55,7 +54,7 @@ public class EditResidentController {
 
     }
 
-    public void onSaveResidentButton(ActionEvent actionEvent) {
+    public void onSaveResidentButton() {
         if (editResident == null) {
             return;
         }

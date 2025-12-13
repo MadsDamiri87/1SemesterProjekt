@@ -49,7 +49,7 @@ public class CommunityTasksController implements Initializable {
         Resident selectedResident = residentDropDown.getValue();
 
         if (description == null || description.trim().isEmpty()) {
-            showAlert("Fejl", "Indtast en beskrivelse");
+            showAlert("Error ", "Type in a description");
             return;
         }
 
@@ -57,17 +57,17 @@ public class CommunityTasksController implements Initializable {
         try {
             points = Integer.parseInt(pointsText);
             if (points <= 0) {
-                showAlert("Fejl", "Point skal være større end 0");
+                showAlert("Error ", "Point need to be bigger then 0");
                 return;
             }
         }
         catch (NumberFormatException e) {
-            showAlert("Fejl", "Point skal være et tal");
+            showAlert("Error ", "Points needs to be a number");
             return;
         }
 
         if (selectedResident == null) {
-            showAlert("Fejl", "Vælg en beboer");
+            showAlert("Error", "Choose a resident ");
             return;
         }
 
@@ -76,30 +76,19 @@ public class CommunityTasksController implements Initializable {
 
         dataManager.addTask(task);
 
-        showAlert("Succes", "Fællesopgave gemt og tildelt til " + selectedResident.getFullname());
+        showAlert("Succes", "Community Task assigned to " + selectedResident.getFullname());
 
         clearFields();
     }
 
     @FXML
-    private void onCancelCommunityTask(ActionEvent event) {
+    private void onCancelCommunityTask() {
         ViewManager.showView("HomeView");
-    }
-
-    private int findResidentPosition(Resident resident, List<Resident> allResidents) {
-        String targetName = resident.getFullname();
-        for (int i = 0; i < allResidents.size(); i++) {
-            Resident r = allResidents.get(i);
-            if (r.getFullname().equals(targetName)) {
-                return i;
-            }
-        }
-        return -1;
     }
 
     private void clearFields() {
         descriptionTextField.clear();
-        pointsTextField.setText("0");
+        pointsTextField.clear();
         residentDropDown.getSelectionModel().clearSelection();
     }
 

@@ -62,8 +62,4 @@ public abstract class Tasks implements Serializable {
         this.points = points;
     }
 
-    public void updateTasks(int points) {
-        this.points = points;
-    }
-
 }

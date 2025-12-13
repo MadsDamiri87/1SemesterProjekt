@@ -12,7 +12,7 @@
 
 <AnchorPane prefHeight="493.0" prefWidth="718.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="semKloeverly.presentation.controllers.GreenTasksController">
    <children>
-      <VBox layoutX="5.0" layoutY="4.0" prefHeight="485.0" prefWidth="708.0">
+      <VBox layoutX="5.0" layoutY="4.0" prefHeight="598.0" prefWidth="708.0">
          <children>
             <HBox alignment="CENTER_RIGHT" prefHeight="39.0" prefWidth="698.0">
                <VBox.margin>
@@ -112,7 +112,7 @@
                   <Insets />
                </VBox.margin>
             </HBox>
-            <HBox alignment="BOTTOM_RIGHT" prefHeight="148.0" prefWidth="708.0">
+            <HBox alignment="BOTTOM_RIGHT" prefHeight="175.0" prefWidth="708.0">
                <children>
                   <Button mnemonicParsing="false" onAction="#onSaveTaskButton" prefHeight="25.0" prefWidth="133.0" text="Save Task">
                      <HBox.margin>
