@@ -51,7 +51,7 @@ public class GreenTasksController
       newGreenTask.setStatus(selectedStatus);
       dataManager.addTask(newGreenTask);
 
-      messageLabel.setText("Status: Green Task " + description + " added");
+      messageLabel.setText("Status: Green Task " + description + " was added");
 
     }
     catch (NumberFormatException e)

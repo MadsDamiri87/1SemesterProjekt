@@ -31,7 +31,7 @@
                         <Insets />
                      </HBox.margin>
                   </Label>
-                  <TextField id="pointsTextfield" fx:id="startingPoints" alignment="CENTER_RIGHT" prefHeight="25.0" prefWidth="54.0" promptText="Kun tal" text="0">
+                  <TextField id="pointsTextfield" fx:id="startingPoints" alignment="CENTER_RIGHT" prefHeight="25.0" prefWidth="54.0" promptText="0" text="0">
                      <HBox.margin>
                         <Insets right="30.0" />
                      </HBox.margin>

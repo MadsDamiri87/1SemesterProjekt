@@ -2,7 +2,6 @@ package semKloeverly.persistence;
 
 import javafx.scene.control.Alert;
 import semKloeverly.domain.Resident;
-import semKloeverly.domain.tasks.GreenTasks;
 import semKloeverly.domain.tasks.Tasks;
 
 import java.io.*;

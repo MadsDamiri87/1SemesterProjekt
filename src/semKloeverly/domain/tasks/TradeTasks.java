@@ -9,8 +9,4 @@ public class TradeTasks extends Tasks {
         super(resident, type, description, points, status);
     }
 
-    @Override
-    public int getPoints() {
-        return 0; //temporary
-    }
 }

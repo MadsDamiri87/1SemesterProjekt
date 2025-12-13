@@ -72,14 +72,19 @@
                               </Button>
                            </children>
                         </VBox>
-                        <TextField id="pointsTextfield" fx:id="pointFieldId" alignment="CENTER_RIGHT" prefHeight="36.0" prefWidth="47.0" promptText="Kun tal" text="0">
+                        <TextField id="pointsTextfield" fx:id="pointFieldId" alignment="CENTER_RIGHT" prefHeight="36.0" prefWidth="47.0" promptText="0">
                            <font>
                               <Font size="16.0" />
                            </font>
                         </TextField>
-                        <Button mnemonicParsing="false" onAction="#onEditResident" prefHeight="25.0" prefWidth="133.0" text="Edit Resident">
+                        <Button fx:id="resetAllPointsID" mnemonicParsing="false" onAction="#onResetAllPoints" prefHeight="25.0" prefWidth="134.0" text="Reset All Points">
                            <HBox.margin>
-                              <Insets left="370.0" />
+                              <Insets left="50.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Button mnemonicParsing="false" onAction="#onEditResident" prefHeight="25.0" prefWidth="127.0" text="Edit Resident">
+                           <HBox.margin>
+                              <Insets left="150.0" />
                            </HBox.margin>
                         </Button>
                      </children>

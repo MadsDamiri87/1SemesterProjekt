@@ -30,7 +30,4 @@ public class DataContainer implements Serializable {
     }
 
     //    public List<PointSystem> getPointSystems() {return pointSystems;}
-    //
-    //    pointSystem er stadig ikke implementeret... Måske det ikke skal være en liste
-    //
 }

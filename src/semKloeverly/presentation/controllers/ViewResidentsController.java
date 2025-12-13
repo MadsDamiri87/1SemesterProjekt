@@ -1,10 +1,7 @@
 package semKloeverly.presentation.controllers;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import semKloeverly.domain.Resident;
@@ -12,118 +9,126 @@ import semKloeverly.persistence.DataManager;
 import semKloeverly.persistence.FileDataManager;
 import semKloeverly.presentation.core.ViewManager;
 
-public class ViewResidentsController
-{
+import java.util.Optional;
 
-  @FXML private TableColumn<Resident, String> residentsName;
+public class ViewResidentsController {
 
-  @FXML private TableColumn<Resident, String> residentsAddress;
+    public Button resetAllPointsID;
+    @FXML
+    private TableColumn<Resident, String> residentsName;
 
-  @FXML private TableColumn<Resident, String> residentsNumber;
+    @FXML
+    private TableColumn<Resident, String> residentsAddress;
 
-  @FXML private TableColumn<Resident, Integer> residentsPoints;
+    @FXML
+    private TableColumn<Resident, String> residentsNumber;
 
-  @FXML private TableView<Resident> residentsViewTable;
+    @FXML
+    private TableColumn<Resident, Integer> residentsPoints;
 
-  @FXML private TextField pointFieldId;
-  private DataManager dataManager;
+    @FXML
+    private TableView<Resident> residentsViewTable;
 
-  @FXML public void initialize()
-  {
-    dataManager = FileDataManager.getInstance();
+    @FXML
+    private TextField pointFieldId;
+    private DataManager dataManager;
 
-    residentsName.setCellValueFactory(new PropertyValueFactory<>("fullname"));
-    residentsAddress.setCellValueFactory(new PropertyValueFactory<>("address"));
-    residentsNumber.setCellValueFactory(
-        new PropertyValueFactory<>("phoneNumber"));
-    residentsPoints.setCellValueFactory(new PropertyValueFactory<>("points"));
+    @FXML
+    public void initialize() {
+        dataManager = FileDataManager.getInstance();
 
-    loadResidents();
-  }
+        residentsName.setCellValueFactory(new PropertyValueFactory<>("fullname"));
+        residentsAddress.setCellValueFactory(new PropertyValueFactory<>("address"));
+        residentsNumber.setCellValueFactory(new PropertyValueFactory<>("phoneNumber"));
+        residentsPoints.setCellValueFactory(new PropertyValueFactory<>("points"));
 
-  public void loadResidents()
-  {
-    residentsViewTable.getItems().setAll(dataManager.getAllResidents());
-
-  }
-
-  public void onAddPointsButton()
-  {
-    Resident selectedResident = residentsViewTable.getSelectionModel()
-        .getSelectedItem();
-
-    if (selectedResident == null)
-    {
-      return;
+        loadResidents();
     }
 
-    try
-    {
-      int addPoints = Integer.parseInt(pointFieldId.getText());
-      selectedResident.setPoints(selectedResident.getPoints() + addPoints);
-      dataManager.updateResident(selectedResident);
-      ViewManager.showView("ViewResidents");
-
-    }
-    catch (NumberFormatException e)
-    {
-      Alert error = new Alert(Alert.AlertType.INFORMATION,
-          "Only numbers are acceptet as points. Try again\n " + e.getMessage());
-      error.show();
+    public void loadResidents() {
+        residentsViewTable.getItems().setAll(dataManager.getAllResidents());
 
     }
 
-  }
+    public void onAddPointsButton() {
+        Resident selectedResident = residentsViewTable.getSelectionModel().getSelectedItem();
 
-  public void onRemovePointsButton()
-  {
-    Resident selectedResident = residentsViewTable.getSelectionModel()
-        .getSelectedItem();
+        if (selectedResident == null) {
+            return;
+        }
 
-    if (selectedResident == null)
-    {
-      return;
-    }
+        try {
+            int addPoints = Integer.parseInt(pointFieldId.getText());
+            selectedResident.setPoints(selectedResident.getPoints() + addPoints);
+            dataManager.updateResident(selectedResident);
+            ViewManager.showView("ViewResidents");
 
-    try
-    {
-      int removePoints = Integer.parseInt(pointFieldId.getText());
+        }
+        catch (NumberFormatException e) {
+            Alert error = new Alert(Alert.AlertType.INFORMATION, "Only numbers are acceptet as points. Try again\n " + e.getMessage());
+            error.show();
 
-      int resetPoints = selectedResident.getPoints() - removePoints;
-
-      if (resetPoints < 0)
-        resetPoints = 0;
-
-      selectedResident.setPoints(resetPoints);
-
-      dataManager.updateResident(selectedResident);
-
-      ViewManager.showView("ViewResidents");
+        }
 
     }
-    catch (NumberFormatException e)
-    {
-      Alert error = new Alert(Alert.AlertType.INFORMATION,
-          "Only numbers are acceptet as points. Try again\n " + e.getMessage());
-      error.show();
+
+    public void onRemovePointsButton() {
+        Resident selectedResident = residentsViewTable.getSelectionModel().getSelectedItem();
+
+        if (selectedResident == null) {
+            return;
+        }
+
+        try {
+            int removePoints = Integer.parseInt(pointFieldId.getText());
+
+            int resetPoints = selectedResident.getPoints() - removePoints;
+
+            if (resetPoints < 0)
+                resetPoints = 0;
+
+            selectedResident.setPoints(resetPoints);
+
+            dataManager.updateResident(selectedResident);
+
+            ViewManager.showView("ViewResidents");
+
+        }
+        catch (NumberFormatException e) {
+            Alert error = new Alert(Alert.AlertType.INFORMATION, "Only numbers are acceptet as points. Try again\n " + e.getMessage());
+            error.show();
+        }
     }
-  }
 
-  public void onEditResident()
-  {
+    public void onEditResident() {
 
-    Resident selectedResident = residentsViewTable.getSelectionModel()
-        .getSelectedItem();
+        Resident selectedResident = residentsViewTable.getSelectionModel().getSelectedItem();
 
-    ViewManager.setEditResident(selectedResident);
+        ViewManager.setEditResident(selectedResident);
 
-    ViewManager.showView("EditResident");
+        ViewManager.showView("EditResident");
 
-  }
+    }
 
-  public void ClickResident()
-  {
-  }
+    public void ClickResident() {
+    }
+
+    public void onResetAllPoints() {
+
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Warning: You are about to reset all the Residents points");
+        alert.setContentText("If you want to proceed please confirm ");
+
+        Optional<ButtonType> result = alert.showAndWait();
+
+        if (result.get() == ButtonType.OK) {
+            for (Resident resident : residentsViewTable.getItems()) {
+                resident.setPoints(0);
+                dataManager.updateResident(resident);
+            }
+            loadResidents();
+        }
+    }
 }
 
 

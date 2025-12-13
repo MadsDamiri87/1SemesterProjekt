@@ -71,7 +71,7 @@
                         <Insets />
                      </HBox.margin>
                   </Label>
-                  <TextField  fx:id="pointField" alignment="CENTER_RIGHT" prefHeight="31.0" prefWidth="78.0" promptText="Kun tal" text="0">
+                  <TextField fx:id="pointField" alignment="CENTER_RIGHT" prefHeight="31.0" prefWidth="78.0" promptText="0">
                      <HBox.margin>
                         <Insets right="200.0" />
                      </HBox.margin>

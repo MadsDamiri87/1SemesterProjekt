@@ -50,8 +50,7 @@ public class AddResidentController
       Resident resident = new Resident(points, name, surName, address,
           phoneNumber);
       dataManager.addResident(resident);
-      messageLabel.setText("Status: Resident " + name + surName + " added");
-
+      messageLabel.setText("Status: Resident " + name + " " + surName + " was added to the system");
 
     }
     catch (NumberFormatException e)
@@ -61,7 +60,11 @@ public class AddResidentController
       error.show();
 
     }
-
+    nameTextFieldResident.clear();
+    surNameTextFieldResident.clear();
+    addressTextFieldResident.clear();
+    phoneNumberTextFieldResident.clear();
+    startingPoints.clear();
   }
 
   public void onCancelNewResidentButton()
