@@ -45,11 +45,19 @@ public class FileDataManager implements DataManager {
     }
 
 
-
-
     @Override
-    public void addTask(Tasks tasks){
+    public void addTask(Tasks tasks) {
         data = load();
+
+        int maxId = 0;
+        for (Tasks t : data.getTasks()) {
+            if (t.getTaskId() > maxId) {
+                maxId = t.getTaskId();
+            }
+        }
+
+        tasks.setTaskId(maxId + 1);
+
         data.getTasks().add(tasks);
         saveResidentFile(data);
     }
@@ -100,6 +108,19 @@ public class FileDataManager implements DataManager {
         return data.getTasks();
     }
 
+    @Override
+    public void updateTasks(Tasks taskInput) {
+        data = load();
+        for (int i = 0; i < data.getResidents().size(); i++) {
+            Tasks task = data.getTasks().get(i);
+            if (task.getTaskId() == taskInput.getTaskId()) {
+                data.getTasks().set(i, taskInput);
+                break;
+            }
+        }
+        saveResidentFile(data);
+    }
+
 
     @Override
     public void deleteResident(Resident deleteResident) {
@@ -122,48 +143,5 @@ public class FileDataManager implements DataManager {
         saveResidentFile(data);
     }
 
-//      @Override
-//      public void addGreenTask(GreenTasks greenTask) {
-//          data = load();
-//          data.getTasks().add(greenTask);
-////          saveResidentFile(data);
-//
-//      }
-
-    //    @Override
-    //    public List<Task> getAllTasks() {
-    //        return List.of();
-    //    }
-    //
-    //    @Override
-    //    public void addGreenTask(GreenTasks greenTask) {
-    //
-    //    }
-    //
-    //    @Override
-    //    public List<GreenTasks> getAllGreenTasks() {
-    //        return List.of();
-    //    }
-    //
-    //    @Override
-    //    public void addCommunityTasks(CommunityTasks communityTask) {
-    //
-    //    }
-    //
-    //    @Override
-    //    public List<CommunityTasks> getAllCommunityTasks() {
-    //        return List.of();
-    //    }
-    //
-    //    @Override
-    //    public void addTradeTasks(TradeTasks tradeTask) {
-    //
-    //    }
-    //
-    //    @Override
-    //    public List<TradeTasks> getAllTradeTasks() {
-    //        return List.of();
-    //    }
-    //
 
 }

@@ -1,29 +1,113 @@
 package semKloeverly.presentation.controllers;
 
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import semKloeverly.domain.Resident;
+import semKloeverly.domain.tasks.CommunityTasks;
+import semKloeverly.domain.tasks.Tasks;
 import semKloeverly.persistence.DataManager;
+import semKloeverly.presentation.core.ViewManager;
+import semKloeverly.persistence.FileDataManager;
 
-public class CommunityTasksController {
+import java.net.URL;
+import java.util.List;
+import java.util.ResourceBundle;
 
-  @FXML private TextField descriptionTextField;
-  @FXML private TextField pointField;
-  @FXML private ComboBox assignResidentComboBox;
-  @FXML private ComboBox statusComboBox;
+public class CommunityTasksController implements Initializable {
 
-  private DataManager dataManager;
+    @FXML
+    private TextField pointsTextField;
 
-  @FXML public void initialize()
-  {
-  }
+    @FXML
+    private TextField descriptionTextField;
 
-  public void onSaveTaskButton(ActionEvent actionEvent)
-  {
-  }
+    @FXML
+    private ComboBox<Resident> residentDropDown;
 
-  public void onCancelTaskButton(ActionEvent actionEvent)
-  {
-  }
+    private DataManager dataManager;
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        dataManager = FileDataManager.getInstance();
+        List<Resident> residents = dataManager.getAllResidents();
+
+        residentDropDown.getItems().clear();
+        for (Resident resident : residents) {
+            residentDropDown.getItems().add(resident);
+        }
+    }
+
+    @FXML
+    private void onSaveCommunityTask(ActionEvent event) {
+        String description = descriptionTextField.getText();
+        String pointsText = pointsTextField.getText();
+        Resident selectedResident = residentDropDown.getValue();
+
+        if (description == null || description.trim().isEmpty()) {
+            showAlert("Fejl", "Indtast en beskrivelse");
+            return;
+        }
+
+        int points;
+        try {
+            points = Integer.parseInt(pointsText);
+            if (points <= 0) {
+                showAlert("Fejl", "Point skal være større end 0");
+                return;
+            }
+        }
+        catch (NumberFormatException e) {
+            showAlert("Fejl", "Point skal være et tal");
+            return;
+        }
+
+        if (selectedResident == null) {
+            showAlert("Fejl", "Vælg en beboer");
+            return;
+        }
+
+        Tasks task = new CommunityTasks(selectedResident, "Community Task", description, points, "Assigned");
+
+
+        dataManager.addTask(task);
+
+        showAlert("Succes", "Fællesopgave gemt og tildelt til " + selectedResident.getFullname());
+
+        clearFields();
+    }
+
+    @FXML
+    private void onCancelCommunityTask(ActionEvent event) {
+        ViewManager.showView("HomeView");
+    }
+
+    private int findResidentPosition(Resident resident, List<Resident> allResidents) {
+        String targetName = resident.getFullname();
+        for (int i = 0; i < allResidents.size(); i++) {
+            Resident r = allResidents.get(i);
+            if (r.getFullname().equals(targetName)) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    private void clearFields() {
+        descriptionTextField.clear();
+        pointsTextField.setText("0");
+        residentDropDown.getSelectionModel().clearSelection();
+    }
+
+    private void showAlert(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
 }

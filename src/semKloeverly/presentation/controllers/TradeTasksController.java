@@ -7,25 +7,27 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import semKloeverly.persistence.DataManager;
 
-public class TradeTasksController
-{
-  @FXML private ComboBox offeredByResident;
-  @FXML private TextField descriptionTextField;
-  @FXML private TextField pointField;
-  @FXML private ComboBox takenByResident;
-  @FXML private DatePicker deadlineDate;
+public class TradeTasksController {
+    @FXML
+    private ComboBox offeredByResident;
+    @FXML
+    private TextField descriptionTextField;
+    @FXML
+    private TextField pointField;
+    @FXML
+    private ComboBox takenByResident;
+    @FXML
+    private DatePicker deadlineDate;
 
-  private DataManager dataManager;
+    private DataManager dataManager;
 
-  @FXML public void initialize()
-  {
-  }
+    @FXML
+    public void initialize() {
+    }
 
-  public void onSaveTaskButton(ActionEvent actionEvent)
-  {
-  }
+    public void onSaveTaskButton(ActionEvent actionEvent) {
+    }
 
-  public void onCancelTaskButton(ActionEvent actionEvent)
-  {
-  }
+    public void onCancelTaskButton(ActionEvent actionEvent) {
+    }
 }

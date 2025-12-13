@@ -3,7 +3,6 @@ package semKloeverly.presentation.controllers;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.MouseEvent;
 import semKloeverly.domain.Resident;
 import semKloeverly.persistence.DataManager;
 import semKloeverly.persistence.FileDataManager;
@@ -95,7 +94,7 @@ public class ViewResidentsController {
 
         }
         catch (NumberFormatException e) {
-            Alert error = new Alert(Alert.AlertType.INFORMATION, "Only numbers are acceptet as points. Try again\n " + e.getMessage());
+            Alert error = new Alert(Alert.AlertType.INFORMATION, "Only numbers are accepted as points. Try again\n " + e.getMessage());
             error.show();
         }
     }
@@ -107,7 +106,6 @@ public class ViewResidentsController {
         ViewManager.setEditResident(selectedResident);
 
         ViewManager.showView("EditResident");
-
     }
 
     public void ClickResident() {

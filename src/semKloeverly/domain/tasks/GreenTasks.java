@@ -3,8 +3,6 @@ package semKloeverly.domain.tasks;
 import semKloeverly.domain.Resident;
 
 import java.io.Serializable;
-import java.util.Collections;
-import java.util.List;
 
 public class GreenTasks extends Tasks implements Serializable {
 

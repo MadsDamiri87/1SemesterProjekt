@@ -32,6 +32,11 @@
             </TableView>
             <HBox alignment="BOTTOM_RIGHT" prefHeight="143.0" prefWidth="720.0">
                <children>
+                  <Button mnemonicParsing="false" onAction="#onResetAllPoints" prefHeight="25.0" prefWidth="134.0" text="Reset All Points">
+                     <HBox.margin>
+                        <Insets right="240.0" />
+                     </HBox.margin>
+                  </Button>
                   <Button mnemonicParsing="false" onAction="#saveDataViewAllTasks" prefHeight="25.0" prefWidth="133.0" text="Save Data">
                      <HBox.margin>
                         <Insets right="20.0" />

@@ -2,8 +2,7 @@ package semKloeverly.domain;
 
 import java.io.Serializable;
 
-public class Resident implements Serializable
-{
+public class Resident implements Serializable {
     private int id;
     private int points;
     private String name;
@@ -12,12 +11,11 @@ public class Resident implements Serializable
     private String phoneNumber;
 
 
-
-    public Resident(int points, String name,  String surname, String address, String phoneNumber) {
-        this.points = points;
-        this.name = name;
-        this.surname = surname;
-        this.address = address;
+    public Resident(int points, String name, String surname, String address, String phoneNumber) {
+        this.points      = points;
+        this.name        = name;
+        this.surname     = surname;
+        this.address     = address;
         this.phoneNumber = phoneNumber;
 
     }
@@ -51,35 +49,29 @@ public class Resident implements Serializable
         this.phoneNumber = phoneNumber;
     }
 
-  public String getName()
-  {
-    return name;
-  }
+    public String getName() {
+        return name;
+    }
 
-  public void setName(String name)
-  {
-    this.name = name;
-  }
+    public void setName(String name) {
+        this.name = name;
+    }
 
-  public void setSurname(String surname)
-  {
-    this.surname = surname;
-  }
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
 
-  public String getSurname()
-  {
-    return surname;
-  }
+    public String getSurname() {
+        return surname;
+    }
 
-  public int getId()
-  {
-    return id;
-  }
+    public int getId() {
+        return id;
+    }
 
-  public void setId(int id)
-  {
-    this.id = id;
-  }
+    public void setId(int id) {
+        this.id = id;
+    }
 
     @Override
     public String toString() {

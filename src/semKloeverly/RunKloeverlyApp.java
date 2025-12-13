@@ -5,8 +5,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import semKloeverly.presentation.controllers.MainViewController;
-import semKloeverly.presentation.core.ViewManager;
 
 public class RunKloeverlyApp extends Application {
     @Override
