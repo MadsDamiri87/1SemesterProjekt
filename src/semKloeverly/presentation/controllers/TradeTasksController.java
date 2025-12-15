@@ -25,9 +25,9 @@ public class TradeTasksController {
     public void initialize() {
     }
 
-    public void onSaveTaskButton(ActionEvent actionEvent) {
+    public void onSaveTaskButton() {
     }
 
-    public void onCancelTaskButton(ActionEvent actionEvent) {
+    public void onCancelTaskButton() {
     }
 }

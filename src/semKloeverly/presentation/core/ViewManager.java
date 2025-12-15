@@ -13,13 +13,6 @@ public class ViewManager
 {
 
   private static AnchorPane centerPane;
-  private static Stage stage;
-  private static Resident editResident;
-
-  public static void setStage(Stage primaryStage)
-  {
-    stage = primaryStage;
-  }
 
   public static void showView(String viewName)
   {
@@ -39,7 +32,6 @@ public class ViewManager
           "Cannot find view: " + viewName);
       error.show();
     }
-
   }
 
   public static void setCenterPane(AnchorPane pane)
