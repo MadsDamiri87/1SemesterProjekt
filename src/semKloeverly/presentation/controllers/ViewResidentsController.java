@@ -103,7 +103,7 @@ public class ViewResidentsController {
 
         Resident selectedResident = residentsViewTable.getSelectionModel().getSelectedItem();
 
-        ViewManager.setEditResident(selectedResident);
+        dataManager.seteditResident(selectedResident.getId());
 
         ViewManager.showView("EditResident");
     }

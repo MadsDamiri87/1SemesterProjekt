@@ -30,7 +30,7 @@ public class EditResidentController {
     public void initialize() {
         dataManager = FileDataManager.getInstance();
 
-        editResident = ViewManager.getEditResident();
+      editResident = dataManager.getEditResident();
 
         setStatusComboBox.getItems().addAll("Taken", "Not Taken", "Assign", "Not Assign");
 

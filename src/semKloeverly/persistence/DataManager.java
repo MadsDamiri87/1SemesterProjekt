@@ -5,19 +5,23 @@ import semKloeverly.domain.tasks.Tasks;
 
 import java.util.List;
 
-public interface DataManager {
+public interface DataManager
+{
 
-    void addResident(Resident resident);
+  void addResident(Resident resident);
 
-    List<Resident> getAllResidents();
+  List<Resident> getAllResidents();
 
-    void updateResident(Resident resident);
+  void updateResident(Resident resident);
 
-    void deleteResident(Resident resident);
+  void deleteResident(Resident resident);
 
-    void addTask(Tasks task);
+  void addTask(Tasks task);
 
-    List<Tasks> getAllTasks();
+  List<Tasks> getAllTasks();
 
-    void updateTasks(Tasks task);
+  void updateTasks(Tasks task);
+
+  void seteditResident(int id);
+  Resident getEditResident();
 }

@@ -11,6 +11,7 @@ public class FileDataManager implements DataManager {
 
     private static DataContainer data = new DataContainer();
     private static FileDataManager instance;
+    private Integer selectedResident;
 
     private FileDataManager() {
     }
@@ -121,8 +122,25 @@ public class FileDataManager implements DataManager {
         saveResidentFile(data);
     }
 
+  @Override public void seteditResident(int id)
+  {
+    selectedResident = id;
+  }
 
-    @Override
+  @Override public Resident getEditResident()
+  {
+    data=load();
+    for (Resident person:data.getResidents())
+    {
+      if (person.getId() == selectedResident)
+        return person;
+    }
+    return null;
+
+
+  }
+
+  @Override
     public void deleteResident(Resident deleteResident) {
         data = load();
         data.getResidents().removeIf(person -> person.getId() == deleteResident.getId());
