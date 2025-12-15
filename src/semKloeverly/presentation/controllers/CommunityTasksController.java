@@ -1,7 +1,6 @@
 package semKloeverly.presentation.controllers;
 
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
@@ -21,13 +20,13 @@ import java.util.ResourceBundle;
 public class CommunityTasksController implements Initializable {
 
     @FXML
-    private TextField pointsTextField;
+    private TextField pointField;
 
     @FXML
     private TextField descriptionTextField;
 
     @FXML
-    private ComboBox<Resident> residentDropDown;
+    private ComboBox<Resident> assignResidentCombox;
 
     private DataManager dataManager;
 
@@ -36,17 +35,18 @@ public class CommunityTasksController implements Initializable {
         dataManager = FileDataManager.getInstance();
         List<Resident> residents = dataManager.getAllResidents();
 
-        residentDropDown.getItems().clear();
+        assignResidentCombox.getItems().clear();
+
         for (Resident resident : residents) {
-            residentDropDown.getItems().add(resident);
+            assignResidentCombox.getItems().add(resident);
         }
     }
 
     @FXML
-    private void onSaveCommunityTask(ActionEvent event) {
+    private void onSaveTaskButton() {
         String description = descriptionTextField.getText();
-        String pointsText = pointsTextField.getText();
-        Resident selectedResident = residentDropDown.getValue();
+        String pointsText = pointField.getText();
+        Resident selectedResident = assignResidentCombox.getValue();
 
         if (description == null || description.trim().isEmpty()) {
             showAlert("Error ", "Type in a description");
@@ -82,14 +82,14 @@ public class CommunityTasksController implements Initializable {
     }
 
     @FXML
-    private void onCancelCommunityTask() {
+    private void onCancelTaskButton() {
         ViewManager.showView("HomeView");
     }
 
     private void clearFields() {
         descriptionTextField.clear();
-        pointsTextField.clear();
-        residentDropDown.getSelectionModel().clearSelection();
+        pointField.clear();
+        assignResidentCombox.getSelectionModel().clearSelection();
     }
 
     private void showAlert(String title, String message) {

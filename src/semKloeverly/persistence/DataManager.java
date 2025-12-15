@@ -22,6 +22,6 @@ public interface DataManager
 
   void updateTasks(Tasks task);
 
-  void seteditResident(int id);
+  void setEditResident(int id);
   Resident getEditResident();
 }

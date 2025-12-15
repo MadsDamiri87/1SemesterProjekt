@@ -51,8 +51,6 @@ public class ViewAllTasksController {
         ViewManager.showView("HomeView");
     }
 
-    public void saveDataViewAllTasks() {
-    }
 
     public void onResetAllPoints() {
 

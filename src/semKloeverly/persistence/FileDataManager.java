@@ -11,7 +11,7 @@ public class FileDataManager implements DataManager {
 
     private static DataContainer data = new DataContainer();
     private static FileDataManager instance;
-    private Integer selectedResident;
+    private int selectedResident;
 
     private FileDataManager() {
     }
@@ -122,7 +122,7 @@ public class FileDataManager implements DataManager {
         saveResidentFile(data);
     }
 
-  @Override public void seteditResident(int id)
+  @Override public void setEditResident(int id)
   {
     selectedResident = id;
   }

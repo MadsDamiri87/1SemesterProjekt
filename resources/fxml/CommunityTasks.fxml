@@ -34,7 +34,7 @@
                     <Insets />
                 </HBox.margin>
             </Label>
-            <TextField fx:id="pointsTextField" alignment="CENTER_RIGHT" prefHeight="31.0" prefWidth="78.0" promptText="0">
+            <TextField fx:id="pointField" alignment="CENTER_RIGHT" prefHeight="31.0" prefWidth="78.0" promptText="0">
                 <HBox.margin>
                     <Insets right="200.0" />
                 </HBox.margin>
@@ -72,7 +72,7 @@
                     <Insets right="10.0" />
                 </HBox.margin>
             </Label>
-            <ComboBox fx:id="residentDropDown" prefHeight="36.0" prefWidth="273.0" promptText="Residents">
+            <ComboBox fx:id="assignResidentCombox" prefHeight="36.0" prefWidth="273.0" promptText="Residents">
                 <HBox.margin>
                     <Insets right="200.0" />
                 </HBox.margin>
@@ -80,12 +80,12 @@
         </HBox>
 
         <HBox alignment="BOTTOM_RIGHT" prefHeight="256.0" prefWidth="708.0">
-            <Button onAction="#onSaveCommunityTask" prefHeight="25.0" prefWidth="133.0" text="Save Task">
+            <Button onAction="#onSaveTaskButton" prefHeight="25.0" prefWidth="133.0" text="Save Task">
                 <HBox.margin>
                     <Insets right="20.0" />
                 </HBox.margin>
             </Button>
-            <Button onAction="#onCancelCommunityTask" prefHeight="25.0" prefWidth="133.0" text="Cancel">
+            <Button onAction="#onCancelTaskButton" prefHeight="25.0" prefWidth="133.0" text="Cancel">
                 <HBox.margin>
                     <Insets right="30.0" />
                 </HBox.margin>

@@ -9,61 +9,72 @@ import semKloeverly.persistence.DataManager;
 import semKloeverly.persistence.FileDataManager;
 import semKloeverly.presentation.core.ViewManager;
 
-public class AddResidentController {
+public class AddResidentController
+{
 
-    @FXML
-    private TextField startingPoints;
+  @FXML private TextField startingPoints;
 
-    @FXML
-    private TextField nameTextFieldResident;
+  @FXML private TextField nameTextFieldResident;
 
-    @FXML
-    private TextField surNameTextFieldResident;
+  @FXML private TextField surNameTextFieldResident;
 
-    @FXML
-    private TextField addressTextFieldResident;
+  @FXML private TextField addressTextFieldResident;
 
-    @FXML
-    private TextField phoneNumberTextFieldResident;
+  @FXML private TextField phoneNumberTextFieldResident;
 
-    private DataManager dataManager;
+  private DataManager dataManager;
 
-    @FXML
-    private Label messageLabel;
+  @FXML private Label messageLabel;
 
-    @FXML
-    public void initialize() {
-        dataManager = FileDataManager.getInstance();
-        messageLabel.setText("Status: Ready to add a resident");
+  @FXML public void initialize()
+  {
+    dataManager = FileDataManager.getInstance();
+    messageLabel.setText("Status: Ready to add a resident");
+  }
+
+  public void onSaveNewResidentButton()
+  {
+    String name = nameTextFieldResident.getText();
+    String surName = surNameTextFieldResident.getText();
+    String address = addressTextFieldResident.getText();
+    String phoneNumber = phoneNumberTextFieldResident.getText();
+
+    try
+    {
+      if (name.isEmpty() || surName.isEmpty() || address.isEmpty()
+          || phoneNumber.isEmpty())
+      {
+        messageLabel.setText("Status: Please fill out all fields.");
+        return;
+      }
+
+      int points = Integer.parseInt(startingPoints.getText());
+      Resident resident = new Resident(points, name, surName, address,
+          phoneNumber);
+
+      dataManager.addResident(resident);
+      messageLabel.setText("Status: Resident " + name + " " + surName
+          + " was added to the system");
+
     }
+    catch (NumberFormatException e)
 
-    public void onSaveNewResidentButton() {
-        String name = nameTextFieldResident.getText();
-        String surName = surNameTextFieldResident.getText();
-        String address = addressTextFieldResident.getText();
-        String phoneNumber = phoneNumberTextFieldResident.getText();
+    {
+      Alert error = new Alert(Alert.AlertType.INFORMATION,
+          "Only numbers are acceptet as points. Try again\n " + e.getMessage());
+      error.show();
 
-        try {
-            int points = Integer.parseInt(startingPoints.getText());
-            Resident resident = new Resident(points, name, surName, address, phoneNumber);
-            dataManager.addResident(resident);
-            messageLabel.setText("Status: Resident " + name + " " + surName + " was added to the system");
-
-        }
-        catch (NumberFormatException e) {
-            Alert error = new Alert(Alert.AlertType.INFORMATION, "Only numbers are acceptet as points. Try again\n " + e.getMessage());
-            error.show();
-
-        }
-        nameTextFieldResident.clear();
-        surNameTextFieldResident.clear();
-        addressTextFieldResident.clear();
-        phoneNumberTextFieldResident.clear();
-        startingPoints.clear();
     }
+    nameTextFieldResident.clear();
+    surNameTextFieldResident.clear();
+    addressTextFieldResident.clear();
+    phoneNumberTextFieldResident.clear();
+    startingPoints.clear();
+  }
 
-    public void onCancelNewResidentButton() {
-        ViewManager.showView("HomeView");
-    }
+  public void onCancelNewResidentButton()
+  {
+    ViewManager.showView("HomeView");
+  }
 
 }
