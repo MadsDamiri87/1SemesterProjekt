@@ -7,7 +7,6 @@ import java.util.List;
 
 public interface DataManager
 {
-
   void addResident(Resident resident);
 
   List<Resident> getAllResidents();
@@ -23,5 +22,6 @@ public interface DataManager
   void updateTasks(Tasks task);
 
   void setEditResident(int id);
+
   Resident getEditResident();
 }

@@ -12,7 +12,7 @@ import java.util.Optional;
 
 public class ViewResidentsController {
 
-    public Button resetAllPointsID;
+
     @FXML
     private TableColumn<Resident, String> residentsName;
 
@@ -28,8 +28,6 @@ public class ViewResidentsController {
     @FXML
     private TableView<Resident> residentsViewTable;
 
-    @FXML
-    private TextField pointFieldId;
     private DataManager dataManager;
 
     @FXML
@@ -49,66 +47,19 @@ public class ViewResidentsController {
 
     }
 
-    public void onAddPointsButton() {
-        Resident selectedResident = residentsViewTable.getSelectionModel().getSelectedItem();
-
-        if (selectedResident == null) {
-            return;
-        }
-
-        try {
-            int addPoints = Integer.parseInt(pointFieldId.getText());
-            selectedResident.setPoints(selectedResident.getPoints() + addPoints);
-            dataManager.updateResident(selectedResident);
-            ViewManager.showView("ViewResidents");
-
-        }
-        catch (NumberFormatException e) {
-            Alert error = new Alert(Alert.AlertType.INFORMATION, "Only numbers are acceptet as points. Try again\n " + e.getMessage());
-            error.show();
-
-        }
-
-    }
-
-    public void onRemovePointsButton() {
-        Resident selectedResident = residentsViewTable.getSelectionModel().getSelectedItem();
-
-        if (selectedResident == null) {
-            return;
-        }
-
-        try {
-            int removePoints = Integer.parseInt(pointFieldId.getText());
-
-            int resetPoints = selectedResident.getPoints() - removePoints;
-
-            if (resetPoints < 0)
-                resetPoints = 0;
-
-            selectedResident.setPoints(resetPoints);
-
-            dataManager.updateResident(selectedResident);
-
-            ViewManager.showView("ViewResidents");
-
-        }
-        catch (NumberFormatException e) {
-            Alert error = new Alert(Alert.AlertType.INFORMATION, "Only numbers are accepted as points. Try again\n " + e.getMessage());
-            error.show();
-        }
-    }
 
     public void onEditResident() {
 
         Resident selectedResident = residentsViewTable.getSelectionModel().getSelectedItem();
 
+        if (selectedResident == null)
+      {
+        return;
+      }
+
         dataManager.setEditResident(selectedResident.getId());
 
         ViewManager.showView("EditResident");
-    }
-
-    public void ClickResident() {
     }
 
     public void onResetAllPoints() {
