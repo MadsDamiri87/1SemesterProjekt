@@ -17,7 +17,8 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class CommunityTasksController implements Initializable {
+public class CommunityTasksController implements Initializable
+{
 
     @FXML
     private TextField pointField;
@@ -31,7 +32,8 @@ public class CommunityTasksController implements Initializable {
     private DataManager dataManager;
 
     @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+    public void initialize(URL url, ResourceBundle resourceBundle)
+    {
         dataManager = FileDataManager.getInstance();
         List<Resident> residents = dataManager.getAllResidents();
 
@@ -43,12 +45,14 @@ public class CommunityTasksController implements Initializable {
     }
 
     @FXML
-    private void onSaveTaskButton() {
+    private void onSaveTaskButton()
+    {
         String description = descriptionTextField.getText();
         String pointsText = pointField.getText();
         Resident selectedResident = assignResidentCombox.getValue();
 
-        if (description == null || description.trim().isEmpty()) {
+        if (description == null || description.trim().isEmpty())
+        {
             showAlert("Error ", "Type in a description");
             return;
         }
@@ -56,17 +60,20 @@ public class CommunityTasksController implements Initializable {
         int points;
         try {
             points = Integer.parseInt(pointsText);
-            if (points <= 0) {
+            if (points <= 0)
+            {
                 showAlert("Error ", "Point need to be bigger then 0");
                 return;
             }
         }
-        catch (NumberFormatException e) {
+        catch (NumberFormatException e)
+        {
             showAlert("Error ", "Points needs to be a number");
             return;
         }
 
-        if (selectedResident == null) {
+        if (selectedResident == null)
+        {
             showAlert("Error", "Choose a resident ");
             return;
         }
@@ -86,13 +93,15 @@ public class CommunityTasksController implements Initializable {
         ViewManager.showView("HomeView");
     }
 
-    private void clearFields() {
+    private void clearFields()
+    {
         descriptionTextField.clear();
         pointField.clear();
         assignResidentCombox.getSelectionModel().clearSelection();
     }
 
-    private void showAlert(String title, String message) {
+    private void showAlert(String title, String message)
+    {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(title);
         alert.setHeaderText(null);
