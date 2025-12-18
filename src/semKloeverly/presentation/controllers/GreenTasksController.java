@@ -14,8 +14,7 @@ import java.util.List;
 
 public class GreenTasksController {
 
-    @FXML
-    private ComboBox<String> statusComboBox;
+
     @FXML
     private TextField pointField;
     @FXML
@@ -34,7 +33,7 @@ public class GreenTasksController {
         List<Resident> allResidents = dataManager.getAllResidents();
 
         assignResidentComboBox.getItems().addAll(allResidents);
-        statusComboBox.getItems().addAll( "Assign", "Not Assign");
+
 
     }
 
@@ -42,13 +41,12 @@ public class GreenTasksController {
 
         String description = descriptionTextfield.getText();
         Resident selectedResident = assignResidentComboBox.getValue();
-        String selectedStatus = statusComboBox.getValue();
+
 
         try {
             int points = Integer.parseInt(pointField.getText());
-            Tasks newGreenTask = new GreenTasks(selectedResident, "Green Task", description, points, selectedStatus);
+            Tasks newGreenTask = new GreenTasks(selectedResident, "Green Task", description, points, "Assigned");
 
-            newGreenTask.setStatus(selectedStatus);
             dataManager.addTask(newGreenTask);
 
             messageLabel.setText("Status: Green Task " + description + " was added");
